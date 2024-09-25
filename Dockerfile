@@ -5,16 +5,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["OpenTelemetryTracesApp/OpenTelemetryTracesApp.csproj", "OpenTelemetryTracesApp/"]
-RUN dotnet restore "OpenTelemetryTracesApp/OpenTelemetryTracesApp.csproj"
+COPY ["OpenTelemetryApp/OpenTelemetryApp.csproj", "OpenTelemetryApp/"]
+RUN dotnet restore "OpenTelemetryApp/OpenTelemetryApp.csproj"
 COPY . .
-WORKDIR "/src/OpenTelemetryTracesApp"
-RUN dotnet build "OpenTelemetryTracesApp.csproj" -c Release -o /app/build
+WORKDIR "/src/OpenTelemetryApp"
+RUN dotnet build "OpenTelemetryApp.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "OpenTelemetryTracesApp.csproj" -c Release -o /app/publish
+RUN dotnet publish "OpenTelemetryApp.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "OpenTelemetryTracesApp.dll"]
+ENTRYPOINT ["dotnet", "OpenTelemetryApp.dll"]
