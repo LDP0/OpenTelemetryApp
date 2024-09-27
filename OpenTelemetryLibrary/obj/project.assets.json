@@ -515,26 +515,6 @@
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
         }
-      },
-      "OpenTelemetryLibrary/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "OpenTelemetry": "1.6.0",
-          "OpenTelemetry.Exporter.Console": "1.6.0",
-          "OpenTelemetry.Exporter.Jaeger": "1.6.0-rc.1",
-          "OpenTelemetry.Exporter.Prometheus.AspNetCore": "1.6.0-rc.1",
-          "OpenTelemetry.Extensions.Hosting": "1.6.0",
-          "OpenTelemetry.Instrumentation.AspNetCore": "1.6.0",
-          "OpenTelemetry.Instrumentation.Http": "1.6.0",
-          "Swashbuckle.AspNetCore": "6.7.3"
-        },
-        "compile": {
-          "bin/placeholder/OpenTelemetryLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/OpenTelemetryLibrary.dll": {}
-        }
       }
     }
   },
@@ -1427,11 +1407,6 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "OpenTelemetryLibrary/1.0.0": {
-      "type": "project",
-      "path": "../OpenTelemetryLibrary/OpenTelemetryLibrary.csproj",
-      "msbuildProject": "../OpenTelemetryLibrary/OpenTelemetryLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1443,7 +1418,6 @@
       "OpenTelemetry.Extensions.Hosting >= 1.6.0",
       "OpenTelemetry.Instrumentation.AspNetCore >= 1.6.0",
       "OpenTelemetry.Instrumentation.Http >= 1.6.0",
-      "OpenTelemetryLibrary >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.7.3"
     ]
   },
@@ -1453,11 +1427,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\luked\\OneDrive\\Documents\\RiderProjects\\OpenTelemetryApp\\OpenTelemetryApp\\OpenTelemetryApp\\OpenTelemetryApp.csproj",
-      "projectName": "OpenTelemetryApp",
-      "projectPath": "C:\\Users\\luked\\OneDrive\\Documents\\RiderProjects\\OpenTelemetryApp\\OpenTelemetryApp\\OpenTelemetryApp\\OpenTelemetryApp.csproj",
+      "projectUniqueName": "C:\\Users\\luked\\OneDrive\\Documents\\RiderProjects\\OpenTelemetryApp\\OpenTelemetryApp\\OpenTelemetryLibrary\\OpenTelemetryLibrary.csproj",
+      "projectName": "OpenTelemetryLibrary",
+      "projectPath": "C:\\Users\\luked\\OneDrive\\Documents\\RiderProjects\\OpenTelemetryApp\\OpenTelemetryApp\\OpenTelemetryLibrary\\OpenTelemetryLibrary.csproj",
       "packagesPath": "C:\\Users\\luked\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\luked\\OneDrive\\Documents\\RiderProjects\\OpenTelemetryApp\\OpenTelemetryApp\\OpenTelemetryApp\\obj\\",
+      "outputPath": "C:\\Users\\luked\\OneDrive\\Documents\\RiderProjects\\OpenTelemetryApp\\OpenTelemetryApp\\OpenTelemetryLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\luked\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1471,11 +1445,7 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {
-            "C:\\Users\\luked\\OneDrive\\Documents\\RiderProjects\\OpenTelemetryApp\\OpenTelemetryApp\\OpenTelemetryLibrary\\OpenTelemetryLibrary.csproj": {
-              "projectPath": "C:\\Users\\luked\\OneDrive\\Documents\\RiderProjects\\OpenTelemetryApp\\OpenTelemetryApp\\OpenTelemetryLibrary\\OpenTelemetryLibrary.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -1538,9 +1508,6 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

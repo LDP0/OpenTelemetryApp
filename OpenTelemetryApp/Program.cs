@@ -1,6 +1,4 @@
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
+using OpenTelemetryLibrary; // Import your library
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,28 +10,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add OpenTelemetry services
-builder.Services.AddOpenTelemetry()
-    .WithTracing(tracerProviderBuilder =>
-    {
-        tracerProviderBuilder
-            .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("OpenTelemetryApp"))
-            .AddAspNetCoreInstrumentation()
-            .AddJaegerExporter(opt =>
-            {
-                opt.AgentHost = "localhost";
-                opt.AgentPort = 6831;
-            })
-            .AddConsoleExporter();
-    })
-    .WithMetrics(metricsProviderBuilder =>
-    {
-        metricsProviderBuilder
-            .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("OpenTelemetryApp"))
-            .AddAspNetCoreInstrumentation()
-            .AddPrometheusExporter()
-            .AddConsoleExporter();
-    });
+// Use the custom OpenTelemetry setup from OpenTelemetryLibrary with console logging enabled
+builder.Services.AddCustomOpenTelemetry(
+    serviceName: "OpenTelemetryApp",        // Service name to identify in traces
+    jaegerHost: "localhost",                // Jaeger host (default: localhost)
+    jaegerPort: 6831,                       // Jaeger port (default: 6831)
+    prometheusEndpoint: "/metrics",         // Prometheus scrape endpoint (default: /metrics)
+    scrapeCacheDurationMilliseconds: 5000,  // Cache duration for Prometheus scrape (default: 5000ms)
+    enableConsoleExporter: false            // Enable console logging for tracing and metrics
+);
 
 builder.Services.AddHttpClient();
 
