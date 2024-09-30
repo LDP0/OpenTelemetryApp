@@ -60,6 +60,8 @@ C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryAp
 C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryApp\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryApp\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryApp\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryApp\bin\Debug\net8.0\OpenTelemetryLibrary.dll
+C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryApp\bin\Debug\net8.0\OpenTelemetryLibrary.pdb
 C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryApp\obj\Debug\net8.0\OpenTelemetryApp.csproj.AssemblyReference.cache
 C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryApp\obj\Debug\net8.0\OpenTelemetryApp.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryApp\obj\Debug\net8.0\OpenTelemetryApp.AssemblyInfoInputs.cache
@@ -82,5 +84,3 @@ C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryAp
 C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryApp\obj\Debug\net8.0\OpenTelemetryApp.pdb
 C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryApp\obj\Debug\net8.0\OpenTelemetryApp.genruntimeconfig.cache
 C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryApp\obj\Debug\net8.0\ref\OpenTelemetryApp.dll
-C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryApp\bin\Debug\net8.0\OpenTelemetryLibrary.dll
-C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryApp\bin\Debug\net8.0\OpenTelemetryLibrary.pdb

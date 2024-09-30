@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Use the custom OpenTelemetry setup from OpenTelemetryLibrary with console logging enabled
+// Use the custom OpenTelemetry setup from OpenTelemetryLibrary
 builder.Services.AddCustomOpenTelemetry(
     serviceName: "OpenTelemetryApp",        // Service name to identify in traces
     jaegerHost: "localhost",                // Jaeger host (default: localhost)
