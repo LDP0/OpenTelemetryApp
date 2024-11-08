@@ -1,36 +1,57 @@
-﻿services:
-  jaeger:
-    image: jaegertracing/all-in-one:latest
-    ports:
-      - "6831:6831/udp"
-      - "16686:16686"
-    networks:
-      - monitoring
-  
-  prometheus:
-    image: prom/prometheus:latest
-    volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
-    ports:
-      - "9090:9090"
-    networks:
-      - monitoring
-  
+﻿version: '3.7'
+
+services:
   grafana:
     image: grafana/grafana:latest
     ports:
-      - "3080:3000"
+      - "3000:3000"
+    depends_on:
+      - tempo
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     volumes:
-      - grafana-storage:/var/lib/grafana
+      - grafana-data:/var/lib/grafana
     networks:
-      - monitoring
+      - telemetry_network
 
+  tempo:
+    image: grafana/tempo:latest
+    ports:
+      - "4317:4317"            # OTLP gRPC for receiving traces
+      - "80:80"                # Tempo HTTP interface
+      - "9095:9095"            # Tempo gRPC interface
+    volumes:
+      - ./tempo.yaml:/etc/tempo.yaml
+    command: -config.file=/etc/tempo.yaml
+    networks:
+      - telemetry_network
+        
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: otel-collector
+    volumes:
+      - ./otel-collector.yaml:/etc/otel/config.yaml
+    command: [ "--config=/etc/otel/config.yaml" ]
+    ports:
+      - 4319:4319
+      - 4318:4318
+    networks:
+      - telemetry_network
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    networks:
+      - telemetry_network
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--enable-feature=otlp-write-receiver"
+      - "--log.level=debug"
+      
 networks:
-  monitoring:
+  telemetry_network:
     driver: bridge
-    name: monitoring
 
 volumes:
-  grafana-storage:
+  grafana-data:

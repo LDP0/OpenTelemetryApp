@@ -1,55 +1,98 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using OpenTelemetry.Metrics;
+using Microsoft.Extensions.Configuration;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using OpenTelemetry.Exporter;
+using OpenTelemetry.Metrics;
 
-namespace OpenTelemetryLibrary;
-
-public static class OpenTelemetryExtensions
+namespace OpenTelemetryLibrary
 {
-    public static IServiceCollection AddCustomOpenTelemetry(this IServiceCollection services, 
-        string serviceName, 
-        string jaegerHost = "localhost",
-        int jaegerPort = 6831,
-        string prometheusEndpoint = "/metrics",
-        int scrapeCacheDurationMilliseconds = 5000,
-        bool enableConsoleExporter = false)
+    public static class OpenTelemetryExtensions
     {
-        // Add OpenTelemetry services for tracing and metrics
-        services.AddOpenTelemetry()
-            .WithTracing(tracerProviderBuilder =>
-            {
-                tracerProviderBuilder
-                    .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService(serviceName))
-                    .AddAspNetCoreInstrumentation()
-                    .AddJaegerExporter(opt =>
-                    {
-                        opt.AgentHost = jaegerHost;   // Use passed configuration (default: localhost)
-                        opt.AgentPort = jaegerPort;  // Use passed configuration (default: 6831)
-                    });
-                
-                if (enableConsoleExporter)  // Conditionally add console exporter
-                {
-                    tracerProviderBuilder.AddConsoleExporter();
-                }
-            })
-            .WithMetrics(metricsProviderBuilder =>
-            {
-                metricsProviderBuilder
-                    .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService(serviceName))
-                    .AddAspNetCoreInstrumentation()
-                    .AddPrometheusExporter(opt =>
-                    {
-                        opt.ScrapeResponseCacheDurationMilliseconds = scrapeCacheDurationMilliseconds;  // Optional cache configuration
-                        opt.ScrapeEndpointPath = prometheusEndpoint;  // Configurable scrape endpoint (default: /metrics)
-                    });
+        public static IServiceCollection AddCustomOpenTelemetry(this IServiceCollection services, IConfiguration configuration)
+        {
+            // Bind the OpenTelemetry settings from appsettings.json
+            var otelOptions = new OpenTelemetryOptions();
+            configuration.GetSection("OpenTelemetry").Bind(otelOptions);
 
-                if (enableConsoleExporter)  // Conditionally add console exporter
-                {
-                    metricsProviderBuilder.AddConsoleExporter();
-                }
-            });
+            // Create resource attributes dictionary
+            var resourceAttributes = new Dictionary<string, object>
+            {
+                { "service.name", otelOptions.ServiceName },
+                { "environment", otelOptions.Environment },
+                { "version", otelOptions.Version },
+                { "region", otelOptions.Region }
+            };
 
-        return services;
+            // Add custom attributes from configuration
+            if (otelOptions.CustomAttributes != null)
+            {
+                foreach (var attr in otelOptions.CustomAttributes)
+                {
+                    resourceAttributes.Add(attr.Key, attr.Value);
+                }
+            }
+
+            // Build the resource with all attributes
+            var resourceBuilder = ResourceBuilder.CreateDefault()
+                .AddAttributes(resourceAttributes);
+
+            // Configure the sampler based on settings
+            Sampler sampler = otelOptions.Sampler switch
+            {
+                "AlwaysOn" => new AlwaysOnSampler(),
+                "AlwaysOff" => new AlwaysOffSampler(),
+                "TraceIdRatioBased" => new TraceIdRatioBasedSampler(otelOptions.SampleRate),
+                _ => new AlwaysOnSampler()
+            };
+
+            // Add OpenTelemetry with tracing and metrics conditionally
+            var openTelemetryBuilder = services.AddOpenTelemetry();
+
+            if (otelOptions.EnableTraces)
+            {
+                openTelemetryBuilder.WithTracing(tracerProviderBuilder =>
+                {
+                    tracerProviderBuilder
+                        .SetResourceBuilder(resourceBuilder)
+                        .AddAspNetCoreInstrumentation()
+                        .AddHttpClientInstrumentation()
+                        .SetSampler(sampler)
+                        .AddOtlpExporter(options =>
+                        {
+                            options.Endpoint = new Uri(otelOptions.OtlpTracesEndpoint);
+                            options.Protocol = OtlpExportProtocol.Grpc;
+                        });
+
+                    if (otelOptions.EnableConsoleExporter)
+                    {
+                        tracerProviderBuilder.AddConsoleExporter();
+                    }
+                });
+            }
+
+            if (otelOptions.EnableMetrics)
+            {
+                openTelemetryBuilder.WithMetrics(metricProviderBuilder =>
+                {
+                    metricProviderBuilder
+                        .SetResourceBuilder(resourceBuilder)
+                        .AddAspNetCoreInstrumentation()
+                        .AddHttpClientInstrumentation()
+                        .AddOtlpExporter(options =>
+                        {
+                            options.Endpoint = new Uri(otelOptions.OtlpMetricsEndpoint);
+                            options.Protocol = OtlpExportProtocol.HttpProtobuf;
+                        });
+
+                    if (otelOptions.EnableConsoleExporter)
+                    {
+                        metricProviderBuilder.AddConsoleExporter();
+                    }
+                });
+            }
+
+            return services;
+        }
     }
 }

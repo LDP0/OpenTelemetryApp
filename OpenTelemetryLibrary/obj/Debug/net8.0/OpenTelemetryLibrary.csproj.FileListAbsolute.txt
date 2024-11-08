@@ -11,3 +11,16 @@ C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryAp
 C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\obj\Debug\net8.0\refint\OpenTelemetryLibrary.dll
 C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\obj\Debug\net8.0\OpenTelemetryLibrary.pdb
 C:\Users\luked\OneDrive\Documents\RiderProjects\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\obj\Debug\net8.0\ref\OpenTelemetryLibrary.dll
+C:\Users\lupe\Downloads\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\bin\Debug\net8.0\OpenTelemetryLibrary.deps.json
+C:\Users\lupe\Downloads\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\bin\Debug\net8.0\OpenTelemetryLibrary.dll
+C:\Users\lupe\Downloads\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\bin\Debug\net8.0\OpenTelemetryLibrary.pdb
+C:\Users\lupe\Downloads\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\obj\Debug\net8.0\OpenTelemetryLibrary.csproj.AssemblyReference.cache
+C:\Users\lupe\Downloads\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\obj\Debug\net8.0\OpenTelemetryLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lupe\Downloads\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\obj\Debug\net8.0\OpenTelemetryLibrary.AssemblyInfoInputs.cache
+C:\Users\lupe\Downloads\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\obj\Debug\net8.0\OpenTelemetryLibrary.AssemblyInfo.cs
+C:\Users\lupe\Downloads\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\obj\Debug\net8.0\OpenTelemetryLibrary.csproj.CoreCompileInputs.cache
+C:\Users\lupe\Downloads\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\obj\Debug\net8.0\OpenTelemetryLibrary.sourcelink.json
+C:\Users\lupe\Downloads\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\obj\Debug\net8.0\OpenTelemetryLibrary.dll
+C:\Users\lupe\Downloads\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\obj\Debug\net8.0\refint\OpenTelemetryLibrary.dll
+C:\Users\lupe\Downloads\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\obj\Debug\net8.0\OpenTelemetryLibrary.pdb
+C:\Users\lupe\Downloads\OpenTelemetryApp\OpenTelemetryApp\OpenTelemetryLibrary\obj\Debug\net8.0\ref\OpenTelemetryLibrary.dll

@@ -1,8 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTelemetryApp", "OpenTelemetryApp\OpenTelemetryApp.csproj", "{A26A66DF-5CF4-48CF-AB58-C24E187601C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTelemetryAppServiceOne", "OpenTelemetryAppServiceOne\OpenTelemetryAppServiceOne.csproj", "{A26A66DF-5CF4-48CF-AB58-C24E187601C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTelemetryLibrary", "OpenTelemetryLibrary\OpenTelemetryLibrary.csproj", "{023F5FB5-8B12-44CC-9490-BA57CBB54DD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTelemetryAppServiceTwo", "OpenTelemetryAppServiceTwo\OpenTelemetryAppServiceTwo.csproj", "{00FB2A88-CDF6-4162-BE5A-6E0703CA96C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +20,9 @@ Global
 		{023F5FB5-8B12-44CC-9490-BA57CBB54DD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{023F5FB5-8B12-44CC-9490-BA57CBB54DD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{023F5FB5-8B12-44CC-9490-BA57CBB54DD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00FB2A88-CDF6-4162-BE5A-6E0703CA96C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00FB2A88-CDF6-4162-BE5A-6E0703CA96C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00FB2A88-CDF6-4162-BE5A-6E0703CA96C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00FB2A88-CDF6-4162-BE5A-6E0703CA96C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

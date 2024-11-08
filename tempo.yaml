@@ -1,0 +1,32 @@
+﻿server:
+  http_listen_port: 80
+  grpc_listen_port: 9095
+
+distributor:
+  receivers:
+    otlp:
+      protocols:
+        grpc:
+
+ingester:
+  lifecycler:
+    ring:
+      kvstore:
+        store: inmemory
+    final_sleep: 0s
+  trace_idle_period: 5m
+  max_block_bytes: 1048576
+  max_block_duration: 1m
+
+compactor:
+  compaction:
+    block_retention: 48h
+    compacted_block_retention: 48h
+
+storage:
+  trace:
+    backend: local
+    block:
+      version: vParquet3
+    local:
+      path: /tmp/tempo/traces
